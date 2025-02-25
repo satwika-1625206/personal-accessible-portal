@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate("/home"); // Redirect to home page after login
+    navigate("/Index"); // Redirect to home page after login
   };
 
   return (
