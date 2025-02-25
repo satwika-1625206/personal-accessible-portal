@@ -40,11 +40,26 @@ const Index = () => {
   ];
 
   const technicalSkills = {
-    languages: ["Python", "JavaScript", "TypeScript", "HTML", "CSS"],
-    frameworks: ["React", "Node.js", "Express.js"],
-    databases: ["MySQL", "MongoDB"],
-    tools: ["Git", "GitHub", "VS Code", "Postman"],
-    other: ["Machine Learning", "Data Analysis", "Web Development", "RESTful APIs"]
+    languages: {
+      skills: ["Python", "JavaScript", "TypeScript", "HTML", "CSS"],
+      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7",
+    },
+    frameworks: {
+      skills: ["React", "Node.js", "Express.js"],
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    },
+    databases: {
+      skills: ["MySQL", "MongoDB"],
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    },
+    tools: {
+      skills: ["Git", "GitHub", "VS Code", "Postman"],
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    },
+    other: {
+      skills: ["Machine Learning", "Data Analysis", "Web Development", "RESTful APIs"],
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    }
   };
 
   const handleLogout = () => {
@@ -151,9 +166,23 @@ const Index = () => {
           <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg">
             <h2 className="text-3xl font-semibold mb-6 text-gray-800">Technical Skills</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Object.entries(technicalSkills).map(([category, skills]) => (
-                <div key={category} className="space-y-3">
-                  <h3 className="text-xl font-medium text-gray-800 capitalize">{category}</h3>
+              {Object.entries(technicalSkills).map(([category, { skills, image }]) => (
+                <motion.div
+                  key={category}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                  className="space-y-3"
+                >
+                  <div className="relative h-40 rounded-lg overflow-hidden mb-4">
+                    <img
+                      src={image}
+                      alt={`${category} skills`}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                      <h3 className="text-xl font-medium text-white capitalize">{category}</h3>
+                    </div>
+                  </div>
                   <div className="flex flex-wrap gap-2">
                     {skills.map((skill) => (
                       <span
@@ -164,7 +193,7 @@ const Index = () => {
                       </span>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
