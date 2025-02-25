@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -39,6 +38,14 @@ const Index = () => {
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     },
   ];
+
+  const technicalSkills = {
+    languages: ["Python", "JavaScript", "TypeScript", "HTML", "CSS"],
+    frameworks: ["React", "Node.js", "Express.js"],
+    databases: ["MySQL", "MongoDB"],
+    tools: ["Git", "GitHub", "VS Code", "Postman"],
+    other: ["Machine Learning", "Data Analysis", "Web Development", "RESTful APIs"]
+  };
 
   const handleLogout = () => {
     navigate("/exit");
@@ -129,6 +136,34 @@ const Index = () => {
                   <p className="text-gray-600">{edu.degree}</p>
                   <p className="text-gray-500">{edu.period}</p>
                   <p className="text-gray-500">{edu.grade}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        <motion.section 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mb-16"
+        >
+          <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-8 shadow-lg">
+            <h2 className="text-3xl font-semibold mb-6 text-gray-800">Technical Skills</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Object.entries(technicalSkills).map(([category, skills]) => (
+                <div key={category} className="space-y-3">
+                  <h3 className="text-xl font-medium text-gray-800 capitalize">{category}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
