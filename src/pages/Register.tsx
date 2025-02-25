@@ -11,7 +11,7 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    navigate("/home"); // Redirect to home page after registration
+    navigate("/Index"); // Redirect to home page after registration
   };
 
   return (
